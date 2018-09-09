@@ -1,0 +1,27 @@
+# _*_ coding: utf8 _*_
+
+import random as r
+total = 100000  # total times
+switch = 0      # 换门次数
+stay = 0        # 保持不变
+switch_win = 0
+stay_win = 0
+
+for i in range(total):
+    car_door = r.randint(0, 2)
+    initial_choice = r.randint(0, 2)
+
+    switch_door = r.choice([True, False])
+    if switch_door:
+        switch += 1
+        if initial_choice != car_door:
+            switch_win += 1
+    else:
+        stay += 1
+        if initial_choice == car_door:
+            stay_win += 1
+
+print(switch)
+print('switch wins %d times, win rate %.2f%%' % (switch_win, switch_win/switch*100))
+print(stay)
+print('stay wins %d times, win rate %.2f%%' % (stay_win, stay_win/stay *100))
